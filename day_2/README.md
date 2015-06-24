@@ -158,10 +158,6 @@ end
 end
 ```
 
-##In-Class Lab
-- We will be practicing iterators and loops.
-- Complete the following [Ruby Monk iterators challenge](https://rubymonk.com/learning/books/1-ruby-primer/chapters/1-arrays/lessons/3-arrays-iteration).
-
 ##Arrays and Iterators Lab
 - In this lab we will be practicing using iterators in combination with arrays to produce the results we are looking for.
 - Let's start with these two arrays:
