@@ -264,6 +264,7 @@ end
 
 ##Hashes
 - Hashes are just a key-value data structure.
+- Why do you think they could be useful?
 - Let's make one:
 
 ```ruby
@@ -276,7 +277,7 @@ book_ratings = {
 }
 ```
 
-What if we wanted to get fancy?
+- What if we wanted to get fancy?
 
 ```ruby
 books_by_author = {
@@ -302,94 +303,43 @@ books_by_author = {
 }
 ```
 
-- What is one possible issue that you can think of with the above?
-- Generally, you don't want to have very hard to manipulate long hash keys.
-- So, let's go to something more straightforward.
-- An actual use for hashes might be to count things, in, let's say a category. Let's consider a bookshelf, again, but this time, just count the number of books that are on the shelf, per genre:
+- This kind of structure is similar to another data structure from JavaScript, called JSON.
+- Let's take a look at some JSON data that comes back from an API.
+- Take a moment and download [JSONView on the Google Chrome store](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en).
+- Next navigate over to [https://daretodiscover.herokuapp.com/users](https://daretodiscover.herokuapp.com/users).
+- What types of data do you see here?
+
+##Accessing Hash Values
+- Since the data are now named in hashes, which is in contrast to arrays, we now need to pull out the data via the "key":
 
 ```ruby
-books_by_genre = {
-	"pulp" => 3,
-	"scifi" => 10,
-	"nonfic" => 10,
-	"comedy" => 4,
-	"tragedy" => 5,
-	"romance" => 0
+books_by_author["Asimov, Isaac"]
+```
+
+##Hash Keys as Symbols
+- Hashes can have keys that are either text or "symbols."
+- The symbol is another type of data in Ruby that acts a lot like a standard variable:
+
+```ruby
+arun = {
+	firstname: "Arun",
+	lastname: "Sood",
+	email: "arun.instructor@gmail.com"
 }
+
+puts arun[:email]
 ```
 
-##A Few Hash Use Cases
-
-#####Let's find out all the genres:
-
-```ruby
-books_by_genre.keys
-```
-
-#####Let's find out the numbers of books, without the categories:
-
-```ruby
-books_by_genre.values
-```
-
-#####Let's see if the hash contains a certain genre:
-
-```ruby
-books_by_genre.include? "pulp"
-```
-
-#####How about deleting a genre entirely? I hate pulp. Easy:
-
-```ruby
-books_by_genre.keep_if do |k,v| 
-	["scifi", "nonfic", "comedy", "tragedy", "romance"].include? k
-end
-```
-
-#####or, a cleaner method:
-```ruby
-books_by_genre.reject { |k,v| k == "pulp" }
-```
-
-##Ruby "Mutator" and "Test" Methods
-- Let's take a look at `books_by_genre` again.
-- Was it modified?
-- What if you use the `reject!` version?
-- Do you see the pattern of having `?` and `!` at the end of method names?
-
-##Accessing a Hash and Reassigning Values
-- Let's take a look at this case:
-
-```ruby
-books_by_genre["pulp"] = 1000
-```
-
-- Reassigning to a hash key that already exists, doesn't create a new hash key with that value. Hash keys are unique. Collisions are overriden.
-- What if we tried to use dot notation like in JavaScript?
-
-```ruby
-books_by_genre.pulp
-> NoMethodError: undefined method `pulp' for #<Hash:0x00000105b03f28>
-```
-
-- To Access hash values you can either use the bracket with a string syntax like this:
-
-```ruby
-books_by_genre["pulp"]
-```
-
-Or you can use the symbol syntax:
-
-```ruby
-books_by_genre[:pulp]
-```
+##Hash Lab
+- For this lab we will be working with the RubyMonk chapter [here](https://rubymonk.com/learning/books/1-ruby-primer/chapters/10-hashes-in-ruby/lessons/46-introduction-to-ruby-hashes).
+- You should also go through this section of RubyMonk [here](https://rubymonk.com/learning/books/1-ruby-primer/chapters/10-hashes-in-ruby/lessons/47-hashes-in-and-out).
 
 ##.merge Method
 - Merge allows you to add keys with values to hashes.
 - Merge is especially used to add parameters to hashes that come from form data in web applications.
 
 ```ruby
-book_by_genre.merge(action: 2)
+book_ratings.merge({ "The Hunger Games" => 4 })
 ```
 ##Arrays
 
