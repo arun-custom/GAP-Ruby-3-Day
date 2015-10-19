@@ -261,6 +261,7 @@ end
 - We will practice our modules by refactoring our current code for the string converter and the calculator exercises.
 - Try to move the main logic of the application into modules for each of these exercises and require them in a master Ruby file.
 - Call each of the methods defined in your new modules.
+- Lastly, try out the [RubyMonk modules chapter](https://rubymonk.com/learning/books/1-ruby-primer/chapters/35-modules/lessons/79-getting-modular).
 
 ##Hashes
 - Hashes are just a key-value data structure.
